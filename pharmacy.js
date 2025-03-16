@@ -17,6 +17,15 @@ export class MagicPill extends Drug {
   update() {}
 }
 
+export class HerbalTea extends Drug {
+  update() {
+    this.expiresIn--;
+    this.benefit++;
+    if (this.expiresIn < 0) this.benefit++;
+    this.benefit = clamp(this.benefit, 0, 50);
+  }
+}
+
 export class Pharmacy {
   constructor(drugs = []) {
     this.drugs = drugs;
