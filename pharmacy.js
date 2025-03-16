@@ -37,6 +37,15 @@ export class Fervex extends Drug {
   }
 }
 
+export class Dafalgan extends Drug {
+  update() {
+    this.expiresIn--;
+    this.benefit -= 2;
+    if (this.expiresIn < 0) this.benefit -= 4;
+    this.benefit = clamp(this.benefit, 0, 50);
+  }
+}
+
 export class Pharmacy {
   constructor(drugs = []) {
     this.drugs = drugs;
