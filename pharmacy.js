@@ -4,13 +4,17 @@ export class Drug {
     this.expiresIn = expiresIn;
     this.benefit = benefit;
   }
-  
+
   update() {
     this.expiresIn--;
     this.benefit--;
     if (this.expiresIn < 0) this.benefit--;
     this.benefit = clamp(this.benefit, 0, 50);
   }
+}
+
+export class MagicPill extends Drug {
+  update() {}
 }
 
 export class Pharmacy {
