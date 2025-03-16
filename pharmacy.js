@@ -1,4 +1,4 @@
-import { clamp } from './utils';
+import { clamp } from "./utils";
 
 export class Drug {
   static MIN_BENEFIT = 0;
@@ -7,13 +7,13 @@ export class Drug {
   constructor(name, expiresIn, benefit) {
     if (new.target === Drug) {
       switch (name) {
-        case 'Magic Pill':
+        case "Magic Pill":
           return new MagicPill(name, expiresIn, benefit);
-        case 'Herbal Tea':
+        case "Herbal Tea":
           return new HerbalTea(name, expiresIn, benefit);
-        case 'Fervex':
+        case "Fervex":
           return new Fervex(name, expiresIn, benefit);
-        case 'Dafalgan':
+        case "Dafalgan":
           return new Dafalgan(name, expiresIn, benefit);
         default:
           break;
