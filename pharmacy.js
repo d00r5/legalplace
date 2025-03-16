@@ -1,3 +1,5 @@
+import { clamp } from './utils';
+
 export class Drug {
   constructor(name, expiresIn, benefit) {
     if (new.target === Drug) {
@@ -64,6 +66,7 @@ export class Pharmacy {
   constructor(drugs = []) {
     this.drugs = drugs;
   }
+
   updateBenefitValue() {
     for (const drug of this.drugs) {
       drug.update();
