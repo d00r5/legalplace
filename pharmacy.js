@@ -1,6 +1,9 @@
 import { clamp } from './utils';
 
 export class Drug {
+  static MIN_BENEFIT = 0;
+  static MAX_BENEFIT = 50;
+
   constructor(name, expiresIn, benefit) {
     if (new.target === Drug) {
       switch (name) {
@@ -26,7 +29,7 @@ export class Drug {
   }
 
   set clampedBenefit(value) {
-    this.benefit = clamp(value, 0, 50);
+    this.benefit = clamp(value, Drug.MIN_BENEFIT, Drug.MAX_BENEFIT);
   }
 
   update() {
