@@ -18,14 +18,21 @@ export class Drug {
     }
     this.name = name;
     this.expiresIn = expiresIn;
-    this.benefit = clamp(benefit, 0, 50);
+    this.clampedBenefit = benefit;
+  }
+
+  get clampedBenefit() {
+    return this.benefit;
+  }
+
+  set clampedBenefit(value) {
+    this.benefit = clamp(value, 0, 50);
   }
 
   update() {
     this.expiresIn--;
-    this.benefit--;
-    if (this.expiresIn < 0) this.benefit--;
-    this.benefit = clamp(this.benefit, 0, 50);
+    this.clampedBenefit--;
+    if (this.expiresIn < 0) this.clampedBenefit--;
   }
 }
 
@@ -36,29 +43,26 @@ export class MagicPill extends Drug {
 export class HerbalTea extends Drug {
   update() {
     this.expiresIn--;
-    this.benefit++;
-    if (this.expiresIn < 0) this.benefit++;
-    this.benefit = clamp(this.benefit, 0, 50);
+    this.clampedBenefit++;
+    if (this.expiresIn < 0) this.clampedBenefit++;
   }
 }
 
 export class Fervex extends Drug {
   update() {
     this.expiresIn--;
-    this.benefit++;
-    if (this.expiresIn < 10) this.benefit++;
-    if (this.expiresIn < 5) this.benefit++;
-    if (this.expiresIn < 0) this.benefit = 0;
-    this.benefit = clamp(this.benefit, 0, 50);
+    this.clampedBenefit++;
+    if (this.expiresIn < 10) this.clampedBenefit++;
+    if (this.expiresIn < 5) this.clampedBenefit++;
+    if (this.expiresIn < 0) this.clampedBenefit = 0;
   }
 }
 
 export class Dafalgan extends Drug {
   update() {
     this.expiresIn--;
-    this.benefit -= 2;
-    if (this.expiresIn < 0) this.benefit -= 4;
-    this.benefit = clamp(this.benefit, 0, 50);
+    this.clampedBenefit -= 2;
+    if (this.expiresIn < 0) this.clampedBenefit -= 4;
   }
 }
 
