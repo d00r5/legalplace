@@ -26,6 +26,17 @@ export class HerbalTea extends Drug {
   }
 }
 
+export class Fervex extends Drug {
+  update() {
+    this.expiresIn--;
+    this.benefit++;
+    if (this.expiresIn < 10) this.benefit++;
+    if (this.expiresIn < 5) this.benefit++;
+    if (this.expiresIn < 0) this.benefit = 0;
+    this.benefit = clamp(this.benefit, 0, 50);
+  }
+}
+
 export class Pharmacy {
   constructor(drugs = []) {
     this.drugs = drugs;
