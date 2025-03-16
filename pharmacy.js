@@ -1,5 +1,19 @@
 export class Drug {
   constructor(name, expiresIn, benefit) {
+    if (new.target === Drug) {
+      switch (name) {
+        case 'Magic Pill':
+          return new MagicPill(name, expiresIn, benefit);
+        case 'Herbal Tea':
+          return new HerbalTea(name, expiresIn, benefit);
+        case 'Fervex':
+          return new Fervex(name, expiresIn, benefit);
+        case 'Dafalgan':
+          return new Dafalgan(name, expiresIn, benefit);
+        default:
+          break;
+      }
+    }
     this.name = name;
     this.expiresIn = expiresIn;
     this.benefit = clamp(benefit, 0, 50);
